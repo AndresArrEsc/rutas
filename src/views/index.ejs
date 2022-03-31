@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UTNG Maps</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css">
+</head>
+<body>
+        <div class="container fixed-top">
+            <div class="row" style="align-items: left">
+                <div class="col-sm-5">
+                    <select class="form-select" aria-label="Default select example" id="producto" name="producto" onchange="ShowSelected();">
+                        <option selected>Seleccione la ruta que desea ver</option>
+                        <option value="../data/Entrada/Entradas-7Ejes.kml">Entrada - Laboratorio 7 Ejes</option>
+                        <option value="../data/Entrada/Entada-EdificioA.kml">Entrada - Edificio A</option>
+                        <option value="../data/Entrada/Entrada-7Ejes2.kml">Entrada - Laboratorio 7 Ejes 2</option>
+                        <option value="../data/Entrada/Entrada-Auditorio.kml">Entrada - Gimnasio Auditorio</option>
+                        <option value="../data/Entrada/Entrada-Biblioteca.kml">Entrada - Biblioteca</option>
+                        <option value="../data/Entrada/Entrada-CGTI.kml">Entrada - Edificio CGTI</option>
+                        <option value="../data/Entrada/Entrada-EdificioC.kml">Entrada - Edificio Area Vinculacion y Servicios Tecnologicos</option>
+                        <option value="../data/Entrada/Entrada-EdificioD.kml">Entrada - Edificio Area Academico Industrial</option>
+                        <option value="../data/Entrada/Entrada-EdificioF.kml">Entrada - Edificio TICS</option>
+                        <option value="../data/Entrada/Entrada-Rectoria.kml">Entrada - Edificio de Rectoria</option>
+                        <option value="../data/Entrada/Entrada-Vinculacion.kml">Entrada - Edificio Vinculacion</option>
+                        <option value="../data/Entrada/Entrada-4Ejes.kml">Entrada - Laboratorio 4 Ejes</option>
+                        <option value="../data/Entrada/Entrada-Cafeteria.kml">Entrada - Cafeteria</option>
+
+                        <option value="../data/Rectoria/7Ejes-Rectoria.kml">Laboratorio 7 Ejes - Rectoria</option>
+                        <option value="../data/Rectoria/EdificioA-Rectoria.kml">Edificio A - Rectoria</option>
+                        <option value="../data/Rectoria/7Ejes2-Rectoria.kml">Laboratorio 7 Ejes 2 - Rectoria</option>
+                        <option value="../data/Rectoria/Auditorio-Rectoria.kml">Gimnasio Auditorio - Rectoria</option>
+                        <option value="../data/Rectoria/Biblioteca-Rectoria.kml">Biblioteca - Rectoria</option>
+                        <option value="../data/Rectoria/CGTI-Rectoria.kml">Edificio CGTI - Rectoria</option>
+                        <option value="../data/Rectoria/EdificioC-Rectoria.kml">Edificio Area Vinculacion y Servicios Tecnologicos - Rectoria</option>
+                        <option value="../data/Rectoria/EdificioD-Rectoria.kml">Edificio Area Academico Industrial - Rectoria</option>
+                        <option value="../data/Rectoria/EdificioF-Rectoria.kml">Edificio TICS - Rectoria</option>
+                        <option value="../data/Rectoria/Vinculacion-Rectoria.kml">Edificio Vinculacion - Rectoria</option>
+                        <option value="../data/Rectoria/4Ejes-Rectoria.kml">Laboratorio 4 Ejes - Rectoria</option>
+                        <option value="../data/Rectoria/Cafeteria-Rectoria.kml">Cafeteria - Rectoria</option>
+
+                        <option value="../data/Auditorio/7Ejes-Auditorio.kml">Laboratorio 7 Ejes - Auditorio</option>
+                        <option value="../data/Auditorio/EdificioA-Auditorio.kml">Edificio A - Auditorio</option>
+                        <option value="../data/Auditorio/7Ejes2-Auditorio.kml">Laboratorio 7 Ejes 2 - Auditorio</option>
+                        <option value="../data/Auditorio/Biblioteca-Auditorio.kml">Biblioteca - Auditorio</option>
+                        <option value="../data/Auditorio/CGTI-Auditorio.kml">Edificio CGTI - Auditorio</option>
+                        <option value="../data/Auditorio/EdificioC-Auditorio.kml">Edificio Area Vinculacion y Servicios Tecnologicos - Auditorio</option>
+                        <option value="../data/Auditorio/EdificioD-Auditorio.kml">Edificio Area Academico Industrial - Auditorio</option>
+                        <option value="../data/Auditorio/EdificioF-Auditorio.kml">Edificio TICS - Auditorio</option>
+                        <option value="../data/Auditorio/Vinculacion-Auditorio.kml">Edificio Vinculacion - Auditorio</option>
+                        <option value="../data/Auditorio/4Ejes-Auditorio.kml">Laboratorio 4 Ejes - Auditorio</option>
+                        <option value="../data/Auditorio/Cafeteria-Auditorio.kml">Cafeteria - Auditorio</option>
+
+                        <option value="../data/Vinculacion/7Ejes-Vinculacion.kml">Laboratorio 7 Ejes - Edificio Vinculacion</option>
+                        <option value="../data/Vinculacion/EdificioA-Vinculacion.kml">Edificio A - Edificio Vinculacion</option>
+                        <option value="../data/Vinculacion/7Ejes2-Vinculacion.kml">Laboratorio 7 Ejes 2 - Edificio Vinculacion</option>
+                        <option value="../data/Vinculacion/Biblioteca-Vinculacion.kml">Biblioteca - Edificio Vinculacion</option>
+                        <option value="../data/Vinculacion/CGTI-Vinculacion.kml">Edificio CGTI - Edificio Vinculacion</option>
+                        <option value="../data/Vinculacion/EdificioC-Vinculacion.kml">Edificio Area Vinculacion y Servicios Tecnologicos - Edificio Vinculacion</option>
+                        <option value="../data/Vinculacion/EdificioD-Vinculacion.kml">Edificio Area Academico Industrial - Edificio Vinculacion</option>
+                        <option value="../data/Vinculacion/EdificioF-Vinculacion.kml">Edificio TICS - Edificio Vinculacion</option>
+                        <option value="../data/Vinculacion/4Ejes-Vinculacion.kml">Laboratorio 4 Ejes - Edificio Vinculacion</option>
+                        <option value="../data/Vinculacion/Cafeteria-Vinculacion.kml">Cafeteria - Edificio Vinculacion</option>
+                      
+                        <option value="../data/Cafeteria/7Ejes-Cafeteria.kml">Laboratorio 7 Ejes - Cafeteria</option>
+                        <option value="../data/Cafeteria/EdificioA-Cafeteria.kml">Edificio A - Cafeteria</option>
+                        <option value="../data/Cafeteria/7Ejes2-Cafeteria.kml">Laboratorio 7 Ejes 2 - Cafeteria</option>
+                        <option value="../data/Cafeteria/Biblioteca-Cafeteria.kml">Biblioteca - Cafeteria</option>
+                        <option value="../data/Cafeteria/CGTI-Cafeteria.kml">Edificio CGTI - Cafeteria</option>
+                        <option value="../data/Cafeteria/EdificioC-Cafeteria.kml">Edificio Area Vinculacion y Servicios Tecnologicos - Cafeteria</option>
+                        <option value="../data/Cafeteria/EdificioD-Cafeteria.kml">Edificio Area Academico Industrial - Cafeteria</option>
+                        <option value="../data/Cafeteria/EdificioF-Cafeteria.kml">Edificio TICS - Cafeteria</option>
+                        <option value="../data/Cafeteria/4Ejes-Cafeteria.kml">Laboratorio 4 Ejes - Cafeteria</option>
+
+                        <option value="../data/4Ejes/7Ejes-4Ejes.kml">Laboratorio 7 Ejes - Laboratorio 4 Ejes</option>
+                        <option value="../data/4Ejes/EdificioA-4Ejes.kml">Edificio A - Laboratorio 4 Ejes</option>
+                        <option value="../data/4Ejes/7Ejes2-4Ejes.kml">Laboratorio 7 Ejes 2 - Laboratorio 4 Ejes</option>
+                        <option value="../data/4Ejes/Biblioteca-4Ejes.kml">Biblioteca - Laboratorio 4 Ejes</option>
+                        <option value="../data/4Ejes/CGTI-4Ejes.kml">Edificio CGTI - Laboratorio 4 Ejes</option>
+                        <option value="../data/4Ejes/EdificioC-4Ejes.kml">Edificio Area Vinculacion y Servicios Tecnologicos - Laboratorio 4 Ejes</option>
+                        <option value="../data/4Ejes/EdificioD-4Ejes.kml">Edificio Area Academico Industrial - Laboratorio 4 Ejes</option>
+                        <option value="../data/4Ejes/EdificioF-4Ejes.kml">Edificio TICS - Laboratorio 4 Ejes</option>
+                    
+                        <option value="../data/Biblioteca/7Ejes-Biblioteca.kml">Laboratorio 7 Ejes - Biblioteca</option>
+                        <option value="../data/Biblioteca/EdificioA-Biblioteca.kml">Edificio A - Biblioteca</option>
+                        <option value="../data/Biblioteca/7Ejes2-Biblioteca.kml">Laboratorio 7 Ejes 2 - Biblioteca</option>
+                        <option value="../data/Biblioteca/CGTI-Biblioteca.kml">Edificio CGTI - Biblioteca</option>
+                        <option value="../data/Biblioteca/EdificioC-Biblioteca.kml">Edificio Area Vinculacion y Servicios Tecnologicos - Biblioteca</option>
+                        <option value="../data/Biblioteca/EdificioD-Biblioteca.kml">Edificio Area Academico Industrial - Biblioteca</option>
+                        <option value="../data/Biblioteca/EdificioF-Biblioteca.kml">Edificio TICS - Biblioteca</option>
+                    
+                        <option value="../data/7Ejes/EdificioA-7Ejes.kml">Edificio A - Laboratorio 7 Ejes</option>
+                        <option value="../data/7Ejes/7Ejes2-7Ejes.kml">Laboratorio 7 Ejes 2 - Laboratorio 7 Ejes</option>
+                        <option value="../data/7Ejes/CGTI-7Ejes.kml">Edificio CGTI - Laboratorio 7 Ejes</option>
+                        <option value="../data/7Ejes/EdificioC-7Ejes.kml">Edificio Area Vinculacion y Servicios Tecnologicos - Laboratorio 7 Ejes</option>
+                        <option value="../data/7Ejes/EdificioD-7Ejes.kml">Edificio Area Academico Industrial - Laboratorio 7 Ejes</option>
+                        <option value="../data/7Ejes/EdificioF-7Ejes.kml">Edificio TICS - Laboratorio 7 Ejes</option>
+
+                        <option value="../data/7Ejes2/EdificioA-7Ejes2.kml">Edificio A - Laboratorio 7 Ejes 2</option>
+                        <option value="../data/7Ejes2/CGTI-7Ejes2.kml">Edificio CGTI - Laboratorio 7 Ejes 2</option>
+                        <option value="../data/7Ejes2/EdificioC-7Ejes2.kml">Edificio Area Vinculacion y Servicios Tecnologicos - Laboratorio 7 Ejes 2</option>
+                        <option value="../data/7Ejes2/EdificioD-7Ejes2.kml">Edificio Area Academico Industrial - Laboratorio 7 Ejes 2</option>
+                        <option value="../data/7Ejes2/EdificioF-7Ejes2.kml">Edificio TICS - Laboratorio 7 Ejes 2</option>
+
+                        <option value="../data/CGTI/EdificioA-CGTI.kml">Edificio A - Edificio CGTI</option>
+                        <option value="../data/CGTI/EdificioC-CGTI.kml">Edificio Area Vinculacion y Servicios Tecnologicos - Edificio CGTI</option>
+                        <option value="../data/CGTI/EdificioD-CGTI.kml">Edificio Area Academico Industrial - Edificio CGTI</option>
+                        <option value="../data/CGTI/EdificioF-CGTI.kml">Edificio TICS - Edificio CGTI</option>
+
+                        <option value="../data/EdificioF/EdificioA-EdificioF.kml">Edificio A - Edificio TICS</option>
+                        <option value="../data/EdificioF/EdificioC-EdificioF.kml">Edificio Area Vinculacion y Servicios Tecnologicos - Edificio TICS</option>
+                        <option value="../data/EdificioF/EdificioD-EdificioF.kml">Edificio Area Academico Industrial - Edificio TICS</option>
+
+                        <option value="../data/EdificioA/EdificioC-EdificioA.kml">Edificio Area Vinculacion y Servicios Tecnologicos - Edificio A</option>
+                        <option value="../data/EdificioA/EdificioD-EdificioA.kml">Edificio Area Academico Industrial - Edificio A</option>
+
+                        <option value="../data/EdificioD/EdificioD-EdificioC.kml">Edificio Area Academico Industrial - Edificio Area Academico Industrial</option>
+                    </select>
+                      
+                </div>
+                <div class="col-sm-5"></div>
+                <div class="col-sm-2">
+                    <button class="btn btn-warning" id="quitar-marcadores">Limpiar Mapa</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="map-template"></div>
+
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+    <script src='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.3.1/leaflet-omnivore.min.js'></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+</body>
+</html>
+
+
